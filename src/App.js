@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { Avatar, Button, Dropdown, Layout, Menu, Select, Spin } from "antd";
 
-import 'antd/dist/antd.css';
 import './App.css';
 import { Home } from "./components/Home";
 import {
@@ -10,14 +9,21 @@ import {
   QuestionCircleOutlined,
 } from "@ant-design/icons";
 
-import logo from "./assets/logo_white.png";
 import { About } from "./components/About";
+
+import 'antd/dist/antd.css';
+import logo from "./assets/logo_trans.png";
+import "@ant-design/flowchart/dist/index.css";
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Option } = Select;
 
 function App() {
   const navigate = useNavigate()
+
+  // const height = window.innerHeight - 120;
+
+  
   return (
     <div className="App">
       {/* TODO: header bar */}
@@ -25,8 +31,10 @@ function App() {
       <Layout>
         <Header>
           <Menu
-            theme="dark"
+            theme="light"
             mode="horizontal"
+            defaultSelectedKeys={['/carbon-map']}
+            selectedKeys={[window.location.pathname]}
           >
             <Menu.Item key={0}>
               <img
@@ -37,8 +45,8 @@ function App() {
                
             </Menu.Item>
 
-            <Menu.Item key={'/map'} onClick={() => navigate("/map")}>
-              <ScanOutlined /> Map
+            <Menu.Item key={'/carbon-map'} onClick={() => navigate("/carbon-map")}>
+              <ScanOutlined /> Carbon Map
             </Menu.Item>
 
             <Menu.Item key={'/about'} onClick={() => navigate("/about")}>
@@ -48,12 +56,19 @@ function App() {
             </Menu>
             </Header>
           <Content>
-          <Routes>
+            <div style={{ margin: '0 auto', paddingLeft: '60px', paddingRight: '60px' }}>
+            <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/maps" element={<Home/>}/>
+                <Route path="/carbon-map" element={<Home/>}/>
                 <Route path="/about" element={<About/>}/>
               </Routes>
+            </div>
           </Content>
+
+          <Footer>
+            <hr/>
+            Built for the <a href="https://taikai.network/gsf/hackathons/carbonhack22">TaikAI CarbonHack 2022</a> hackathon. CarbonOracle &copy;2022
+          </Footer>
         </Layout>
       </div>
   );

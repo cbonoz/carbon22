@@ -12,7 +12,12 @@ Demo video:
 
 
 
-
+### TODO:
+* Add ability to multi-select region locations on map
+* Allow user to specify 'load' duration for the forecast API.
+* Based on selected locations make an api call to the sdk to determine the best forecast.
+* Suggest regions to run the load if the user didn't select a region with great carbon emissions.
+* Add chart visualization with the best time range highlighted on the chart for the user in an easy to read format.
 
 
 ### Future work

@@ -5,26 +5,29 @@ import { REGION_MARKERS } from '../constants/regions'
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json"
 
-export const CarbonMap = (activeRegions, setActiveRegions) => {
+export const CarbonMap = (width, activeRegions, setActiveRegions) => {
+    // const regionSet = new Set(activeRegions.map(x => x.name))
+    const regionSet = new Set([])
 
-    return <ComposableMap  projectionConfig={{ scale: 100 }}>>
+    return <ComposableMap  projectionConfig={{ scale: 75 }}>
     <ZoomableGroup center={[0, 0]} zoom={1}>
-
     <Graticule stroke="#F53" />
     <Geographies geography={geoUrl}>
       {({ geographies }) =>
         geographies.map((geo) => (
           <Geography 
-          fill="#EAEAEC"
+          fill={"#EAEAEC"}
           stroke="#D6D6DA"
           key={geo.rsmKey} 
           geography={geo} />
         ))
       }
     </Geographies>
-    {REGION_MARKERS.map(({ name, coordinates, markerOffset }) => (
-        <Marker key={name} coordinates={coordinates}>
-          <circle r={10} fill="#F00" stroke="#fff" strokeWidth={2} />
+    {REGION_MARKERS.map(({ name, coordinates, markerOffset }) => {
+        const markerColor = regionSet.has(name) ? '#F00' : '#DDD';
+
+        return <Marker key={name} coordinates={coordinates}>
+          <circle r={10} fill={markerColor} stroke="#fff" strokeWidth={2} />
           <text
             textAnchor="middle"
             y={markerOffset}
@@ -32,8 +35,8 @@ export const CarbonMap = (activeRegions, setActiveRegions) => {
           >
             {name}
           </text>
-        </Marker>
-      ))}
+        </Marker>}
+      )}
       </ZoomableGroup>
   </ComposableMap>
 

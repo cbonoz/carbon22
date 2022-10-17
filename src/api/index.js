@@ -1,15 +1,23 @@
 import axios from 'axios'
+import qs from 'qs'
 
-const BASE_URL = 'https://grnsft.org/hack22/api'
+// const BASE_URL = 'https://grnsft.org/hack22/api'
+const baseURL = 'https://carbon-aware-api.azurewebsites.net'
+
+let carbonAxios = axios.create({
+    paramsSerializer: params => qs.stringify(params, {arrayFormat: 'repeat'})
+})
 
 // https://carbon-aware-api.azurewebsites.net/swagger/index.html
 
-export const getForecastForRegions = (regions, dataStartAt, dataEndAt) => {
+export const getForecastForRegions = (location, dataStartAt, dataEndAt) => {
     const params = {
-        regions,
+        location,
         dataStartAt,
         dataEndAt
     }
-    const url =`${BASE_URL}/emissions/forecasts/current`
-    return axios.get(url, { params });
+    const paramString = qs.stringify(params, {arrayFormat: 'repeat'})
+    const url =`${baseURL}/emissions/forecasts/current?${paramString}`
+    console.log('getForecast', url, params)
+    return axios.get(url)
 }

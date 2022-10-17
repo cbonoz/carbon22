@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import { Graticule } from 'react-simple-maps'
 import { getForecastForRegions } from '../api'
 import { CarbonMap } from './CarbonMap'
-import { Button, Drawer, Space } from 'antd';
+import { Button, Drawer, Space, Select } from 'antd';
 import { APP_NAME } from '../constants/constants';
+import { CarbonChart } from './CarbonChart';
+import { AZURE_REGIONS } from '../constants/regions';
+const { Option } = Select;
 
 export const Home = () => {
     const [results, setResults] = useState()
     const [loading, setLoading] = useState(false)
-    const [regions, setRegions] = useState()
+    const [regions, setRegions] = useState([])
     const [start, setStart] = useState()
     const [end, setEnd] = useState()
     const [error, setError] = useState()
@@ -30,22 +32,56 @@ export const Home = () => {
         }
     }
 
+    const handleChange = (value) => {
+        console.log(`Selected: ${value}`);
+        setRegions(value)
+      };
+
     return  <div>
-        <CarbonMap/>
+              <Select
+        mode="multiple"
+        size={'large'}
+        placeholder="Please select"
+        defaultValue={regions}
+        
+        onChange={handleChange}
+        style={{
+            width: '100%',
+          }}
+      >
+        {AZURE_REGIONS.map((r, i) => {
+            return <Option
+                key={r.name}>{r.displayName}</Option>
+        })}
+      </Select>
+      <Button type="primary" disabled={regions.length === 0} onClick={() => setShowDrawer(true)}>
+        Predict
+      </Button>
+        <CarbonMap
+            activeRegions={regions}
+        />
         <Drawer
         title={APP_NAME}
+        mask={false}
         placement="right"
         size={'large'}
+        afterOpenChange={(open) => {
+            if (open) {
+                getForecasts()
+            }
+        }}
+        destroyOnClose
+        closable
         onClose={() => setShowDrawer(false)}
-        open={() => setShowDrawer(true)}
+        open={showDrawer}
         extra={
           <Space>
             <Button type="secondary" onClick={() => setShowDrawer(false)}>Close</Button>
           </Space>
         }
       >
-        <p>Test</p>
-
+        {JSON.stringify(results || {})}
+        <CarbonChart/>
         </Drawer>
     </div>
 

@@ -1,0 +1,11 @@
+.header-logo {
+  height: 60px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.ant-layout-header {
+  background: white !important;
+}
