@@ -1,3 +1,9 @@
+<br/>
+<p align='center'>
+    <img src="./img/logo_trans.png" width=400/>
+</p>
+<br/>
+
 CarbonOracle
 ---
 
@@ -13,7 +19,7 @@ Terminal 2: `yarn; yarn start`
 
 Website should now be running on port 3000 (server on 3001).
 
-### Concept
+### Motivation
 
 It can be tempting to just select the region closest to you when doing a job.
 
@@ -29,7 +35,7 @@ It's important to note that CarbonOracle presents a *forecast* of the best times
 
 ### How to use
 
-Before running a job check `CarbonOracle` for the best times in your region (and even outside your region) for the best time slot.
+Before running a job check the `CarbonOracle` app for the best times in your region (and even outside your region) for the best time slot.
 
 
 ### Potential future work:
