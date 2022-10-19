@@ -1,23 +1,44 @@
 import axios from 'axios'
 import qs from 'qs'
+import {MD5} from 'crypto-js'
+import { formatDate } from '../util'
 
 // const BASE_URL = 'https://grnsft.org/hack22/api'
-const baseURL = 'https://carbon-aware-api.azurewebsites.net'
-
-let carbonAxios = axios.create({
-    paramsSerializer: params => qs.stringify(params, {arrayFormat: 'repeat'})
-})
+const hostname = window.location.hostname
+const isLocal = hostname.indexOf("localhost") !== -1
+const baseURL = isLocal ? 'http://localhost:3001' : 'https://carbon-aware-api.azurewebsites.net'
+const PROXY_URL = 'http://http-proxy.fly.dev/proxy'
 
 // https://carbon-aware-api.azurewebsites.net/swagger/index.html
 
-export const getForecastForRegions = (location, dataStartAt, dataEndAt) => {
+export const getForecastForRegions = (location, windowSize, dataStartAt, dataEndAt) => {
     const params = {
         location,
         dataStartAt,
+        windowSize,
         dataEndAt
     }
     const paramString = qs.stringify(params, {arrayFormat: 'repeat'})
     const url =`${baseURL}/emissions/forecasts/current?${paramString}`
     console.log('getForecast', url, params)
-    return axios.get(url)
+    if (isLocal) {
+        return axios.get(url)
+    }
+    return axios.post(PROXY_URL, {
+        url,
+        type: 'GET',
+        hash: MD5(window.location.pathname)
+    })
 }
+// [{"generatedAt":"2022-10-18T20:50:00+00:00","requestedAt":"2022-10-18T20:51:54.8377929+00:00","location":"eastus","dataStartAt":"2022-10-18T20:55:00+00:00","dataEndAt":"2022-10-19T20:55:00+00:00","windowSize":5,"optimalDataPoints":[{"location":"PJM_ROANOKE","timestamp":"2022-10-19T09:55:00+00:00","duration":5,"value":538.9647994546058}],"forecastData":[...]},]
+export const processForecastData = (data, regionNames) => {
+    const results = []
+    data.forEach((d, i) => {
+        const location = regionNames[i];
+        const forecastData = d.forecastData.map(x => ({...x, location}))
+        results.push(forecastData);
+    })
+    
+    return results.flat().map(x => ({...x, timestamp: formatDate(x.timestamp)}))
+}
+

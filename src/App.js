@@ -14,6 +14,7 @@ import { About } from "./components/About";
 import 'antd/dist/antd.css';
 import logo from "./assets/logo_trans.png";
 import "@ant-design/flowchart/dist/index.css";
+import { APP_DESC } from "./constants/constants";
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Option } = Select;
@@ -56,7 +57,7 @@ function App() {
             </Menu>
             </Header>
           <Content>
-            <div style={{ margin: '0 auto', paddingLeft: '60px', paddingRight: '60px' }}>
+            <div className="container">
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/carbon-map" element={<Home/>}/>
@@ -67,7 +68,9 @@ function App() {
 
           <Footer>
             <hr/>
-            Built for the <a href="https://taikai.network/gsf/hackathons/carbonhack22">TaikAI CarbonHack 2022</a> hackathon. CarbonOracle &copy;2022
+            <p><b>CarbonOracle</b> &copy;2022.&nbsp;{APP_DESC}.<br/>
+            Built for the <a href="https://taikai.network/gsf/hackathons/carbonhack22">TaikAI CarbonHack 2022</a> hackathon.
+</p>
           </Footer>
         </Layout>
       </div>

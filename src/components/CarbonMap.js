@@ -5,11 +5,17 @@ import { REGION_MARKERS } from '../constants/regions'
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json"
 
-export const CarbonMap = (width, activeRegions, setActiveRegions) => {
+export const CarbonMap = ({activeRegions}) => {
     // const regionSet = new Set(activeRegions.map(x => x.name))
-    const regionSet = new Set([])
+    const regionSet = new Set((Array.isArray(activeRegions) ? activeRegions : []).map(x => x.value))
+    console.log('regionSet', regionSet)
 
-    return <ComposableMap  projectionConfig={{ scale: 75 }}>
+    // For rendering order.
+    const sortedMarkers = REGION_MARKERS.sort(x => regionSet.has(x.name) ? 1 : -1)
+
+    return <div>
+      {/* <p>Hello: {JSON.stringify(activeRegions)}</p> */}
+      <ComposableMap  projectionConfig={{ scale: 150 }}>
     <ZoomableGroup center={[0, 0]} zoom={1}>
     <Graticule stroke="#F53" />
     <Geographies geography={geoUrl}>
@@ -23,22 +29,24 @@ export const CarbonMap = (width, activeRegions, setActiveRegions) => {
         ))
       }
     </Geographies>
-    {REGION_MARKERS.map(({ name, coordinates, markerOffset }) => {
-        const markerColor = regionSet.has(name) ? '#F00' : '#DDD';
+    {sortedMarkers.map(({ name, displayName, coordinates, markerOffset }) => {
+        const selected = regionSet.has(name)
+        const markerColor = selected ? '#F00' : '#DDD';
 
-        return <Marker key={name} coordinates={coordinates}>
-          <circle r={10} fill={markerColor} stroke="#fff" strokeWidth={2} />
-          <text
+        return <Marker key={displayName} coordinates={coordinates}>
+          <circle r={12} fill={markerColor} stroke="#fff" strokeWidth={2}/>
+          {/* <text
             textAnchor="middle"
             y={markerOffset}
             style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
           >
             {name}
-          </text>
+          </text> */}
         </Marker>}
       )}
       </ZoomableGroup>
   </ComposableMap>
+</div>
 
 
 }
