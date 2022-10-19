@@ -7,7 +7,7 @@ import { formatDate } from '../util'
 const hostname = window.location.hostname
 const isLocal = hostname.indexOf("localhost") !== -1
 const baseURL = isLocal ? 'http://localhost:3001' : 'https://carbon-aware-api.azurewebsites.net'
-const PROXY_URL = 'http://http-proxy.fly.dev/proxy'
+const PROXY_URL = 'https://http-proxy.fly.dev/proxy'
 
 // https://carbon-aware-api.azurewebsites.net/swagger/index.html
 
@@ -27,8 +27,8 @@ export const getForecastForRegions = (location, windowSize, dataStartAt, dataEnd
     return axios.post(PROXY_URL, {
         url,
         type: 'GET',
-        hash: MD5(window.location.pathname)
-    })
+        hash: MD5(window.location.origin).toString()
+    }).data
 }
 // [{"generatedAt":"2022-10-18T20:50:00+00:00","requestedAt":"2022-10-18T20:51:54.8377929+00:00","location":"eastus","dataStartAt":"2022-10-18T20:55:00+00:00","dataEndAt":"2022-10-19T20:55:00+00:00","windowSize":5,"optimalDataPoints":[{"location":"PJM_ROANOKE","timestamp":"2022-10-19T09:55:00+00:00","duration":5,"value":538.9647994546058}],"forecastData":[...]},]
 export const processForecastData = (data, regionNames) => {
