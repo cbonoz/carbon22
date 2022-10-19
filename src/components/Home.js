@@ -2,7 +2,7 @@ import React, {useState, } from 'react'
 import { getForecastForRegions, } from '../api'
 import { CarbonMap } from './CarbonMap'
 import { Button, notification, Drawer, Space, Select, Spin, Row, Col } from 'antd';
-import { APP_NAME, DURATION_OPTIONS } from '../constants/constants';
+import { APP_NAME, DURATION_OPTIONS, IS_LOCAL } from '../constants/constants';
 import { CarbonChart } from './CarbonChart';
 import { AZURE_REGIONS } from '../constants/regions';
 const { Option } = Select;
@@ -23,7 +23,11 @@ export const Home = () => {
         setLoading(true)
         const regionValues = regions.map(x => x.value)
         try {
-            const {data} = await getForecastForRegions(regionValues, duration, start, end)
+            let {data} = await getForecastForRegions(regionValues, duration, start, end)
+            if (!IS_LOCAL) {
+              // TODO: remove different nesting on proxy
+              data = data.data
+            }
             console.log('forecast', data)
             setChartData(data)
         } catch (e) {
