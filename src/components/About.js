@@ -15,9 +15,9 @@ Green software engineering takes into consideration software practices and archi
 
 ### What is CarbonOracle
 
-${APP_NAME} is a tool that can be easily integrated into green job execution timings and help identify the best times and regions to do computationally intensive work. It's important to note that ${APP_NAME} presents a *forecast* of the best times and can (and should) be treated as an approximation. ${APP_NAME} can both tell you which times to generally avoid as well as which times to prefer.
+${APP_NAME} is a tool that can be easily integrated into green job execution timings and help identify the best times and regions to do computationally intensive work. 
 
-It's important to note that CarbonOracle presents a *forecast* of the best times and can (and should) be treated as an approximation. CarbonOracle can both tell you which times to generally avoid as well as which times to prefer.
+It's important to note that ${APP_NAME} presents a *forecast* of the best times and can (and should) be treated as an approximation. ${APP_NAME} can both tell you which times to generally avoid as well as which times to prefer.
 
 ### Value propositions
 * No command line tools required - simply open ${APP_NAME} before you run or schedule a job.
