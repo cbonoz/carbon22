@@ -27,7 +27,6 @@ export const Home = () => {
             console.log('forecast', data)
             setChartData(data)
         } catch (e) {
-            setError(e)
             const msg = e.response.data.detail
             console.error('error getting forecast', e)
             setError(`Error getting forecast (${msg}). One or more of your selected regions may be temporarily unsupported.`)
