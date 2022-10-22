@@ -23,6 +23,14 @@
   font-size: 28px;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
+.error-text {
+  color: red;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1200px;

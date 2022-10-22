@@ -1,6 +1,5 @@
 import React from "react";
 import { Area, Line } from '@ant-design/charts';
-import { DEMO_DATA } from "../constants/forecast";
 import { processForecastData } from "../api";
 import { addMinutes, formatDate } from "../util";
 import { Card } from "antd";
@@ -32,7 +31,7 @@ export const CarbonChart = ({data, duration, activeRegions=[]}) => {
         yField: 'value',
         yAxis: {
           label: {
-            formatter: (v) => `${v} CO2`
+            formatter: (v) => `${v} gCO2/kWh`
           },
         },
         // xAxis: {
@@ -68,7 +67,7 @@ export const CarbonChart = ({data, duration, activeRegions=[]}) => {
     return <div>
         <h1>Carbon Forecast</h1>
         <h3>Regions: {regionNames.join(',')}</h3>
-        <span>Showing next 24 hours. Duration {duration} minutes. Best forecasted time windows highlighted below.</span>
+        <span>Showing forecast for next 24 hours. Duration {duration} minutes. Best forecasted time windows highlighted below.</span>
         <Line {...config}/>
         <br/>
         <br/>
@@ -76,13 +75,16 @@ export const CarbonChart = ({data, duration, activeRegions=[]}) => {
           <h2>Results - lower score is better</h2>
         <p>Based on the selected regions, the following times would work best for your run:</p>
           {[...annotations].sort((a, b) => a.value > b.value ? 1 : -1).map((result, i) => {
+            const title = <span>
+              {result.location} ({result.value.toFixed(2)} gCO2/kWh)&nbsp;{i === 0 && <CheckCircleTwoTone twoToneColor="#52c41a" />}
+            </span>
             return <span style={{display: 'inline-block'}} key={i}>
-              <Card title={<span>{result.location} ({result.value.toFixed(2)})&nbsp;{i === 0 && <CheckCircleTwoTone twoToneColor="#52c41a" />}</span>} style={{ width: 300, margin: 10 }} key={i}>
+              <Card title={title} style={{ width: 300, margin: 10 }} key={i}>
               <b>Start:</b> {result.start[0]}<br/>
               <b>End:</b> {result.end[0]} <br/>
               <b>Duration:</b> {result.duration} minutes
             </Card>
-</span>
+          </span>
           })}
           </div>
     </div>

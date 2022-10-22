@@ -19,24 +19,21 @@ export const Home = () => {
 
 
     async function getForecasts() {
-        setError(false)
-        setLoading(true)
         const regionValues = regions.map(x => x.value)
+        setLoading(true)
+        setError(undefined)
         try {
             let {data} = await getForecastForRegions(regionValues, duration, start, end)
-            if (!IS_LOCAL) {
-              // TODO: remove different nesting on proxy
-              data = data.data
-            }
             console.log('forecast', data)
             setChartData(data)
         } catch (e) {
             setError(e)
             const msg = e.response.data.detail
             console.error('error getting forecast', e)
+            setError(`Error getting forecast (${msg}). One or more of your selected regions may be temporarily unsupported.`)
             notification.error({
-              message: `Error fetching forecast data`,
-              description:`One or more of your regions may be temporarily unsupported (${msg})`,
+              message: `Error getting forecast`,
+              description:`One or more of your selected regions may be temporarily unsupported (${msg})`,
               placement: 'top',
             });
         } finally {
@@ -129,6 +126,7 @@ export const Home = () => {
       >
         {loading && <Spin/>}
         {!loading && chartData && <CarbonChart data={chartData} activeRegions={regions} duration={duration}/>}
+        {error && <p className='error-text'>{error}</p>}
         </Drawer>
     </div>
 
