@@ -18,8 +18,15 @@ Participant deck: <a href="https://docs.google.com/presentation/d/1nRzRlhCGZpVwF
 Demo video:
 
 # Running locally
-Terminal 1: `cd proxy-server; yarn; yarn start`
-Terminal 2: `yarn; yarn start`
+Terminal 1: 
+<pre>
+cd proxy-server; yarn; yarn start
+</pre>
+
+Terminal 2: 
+<pre>
+yarn; yarn start`
+</pre>
 
 Website should now be running on port 3000 (server on 3001).
 
