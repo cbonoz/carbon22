@@ -7,9 +7,13 @@
 CarbonOracle
 ---
 
-Carbon visualization platform for software and job planning on Azure network.
+A prediction platform for software and job carbon footprint minimization on the Azure network.
+
+Built for the TaikAI Carbon hack 2022.
 
 Live Demo: <a href='https://www.carbonoracle.surge.sh' target="_blank">https://www.carbonoracle.surge.sh</a>
+
+Participant deck: <a href="https://docs.google.com/presentation/d/1nRzRlhCGZpVwF7Yg8VjK8B5mtNe3yi7gUCPn5caGmxw/edit?usp=sharing" target="_blank">CarbonOracle Pitch</a>
 
 Demo video:
 
@@ -32,10 +36,10 @@ CarbonOracle is a tool that can be easily integrated into green job execution ti
 It's important to note that CarbonOracle presents a *forecast* of the best times and can (and should) be treated as an approximation. CarbonOracle can both tell you which times to generally avoid as well as which times to prefer.
 
 ### Value propositions
-* No command line tools required - simply open carbonoracle before you run or schedule a job.
-* Use carbonoracle to discover regions (even outside the ones you most commonly use) that are present the most optimal time windows.
+* Use CarbonOracle to discover regions (even outside the ones you most commonly use) that are present the most optimal time windows.
 * Use patterns to schedule jobs even beyond the forecast window.
-* Since CarbonOracle runs separately from your dev process in the cloud, there is no need to add unnecessary coupling or custom logic to each task to query best carbon time windows.
+* Since CarbonOracle runs separately from your dev process in the cloud, there is no need to add unnecessary coupling or custom logic to each task to query best carbon time windows 
+* No command line tools required - simply open CarbonOracle before you run or schedule a job.
 
 ### How to use
 
