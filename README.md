@@ -25,10 +25,10 @@ cd proxy-server; yarn; yarn start
 
 Terminal 2: 
 <pre>
-yarn; yarn start`
+yarn; yarn start
 </pre>
 
-Website should now be running on port 3000 (server on 3001).
+Website should now be running on port 3000 (with API server on 3001).
 
 ### Motivation / Importance of Carbon
 
