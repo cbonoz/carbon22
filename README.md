@@ -63,7 +63,19 @@ Before running a job check the `CarbonOracle` app for the best times in your reg
 * Create integrations that can support querying CarbonOracle in real time in pipeline flow.
 * Create a business platform that enables companies to track their net engineering green performance on a dashboard 
 
+### Screenshots
+
+#### Selecting regions
+<img src="./img/home.png" width=800 />
+
+#### Predictions (real-time / dynamically generated)
+<img src="./img/predict.png" width=800 />
+
+#### About page
+<img src="./img/about.png" width=800 />
+
 ### Useful links
 * https://taikai.network/gsf/hackathons/carbonhack22
 * https://github.com/Green-Software-Foundation/carbon-aware-sdk
 * https://docs.google.com/document/d/16P5XCQwn5wm1Sf-S496i0yliUDqEBTYC73ZCxW-iXL8/edit#heading=h.s93ajhcngbd3
+
