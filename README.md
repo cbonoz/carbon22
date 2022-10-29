@@ -69,7 +69,7 @@ Before running a job check the `CarbonOracle` app for the best times in your reg
 <img src="./img/home.png" width=800 />
 
 #### Predictions (real-time / dynamically generated)
-<img src="./img/predict.png" width=800 />
+<img src="./img/predictions.png" width=800 />
 
 #### About page
 <img src="./img/about.png" width=800 />
