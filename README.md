@@ -61,10 +61,6 @@ Before running a job check the `CarbonOracle` app for the best times in your reg
 * Add chart visualization with the best time range highlighted on the chart for the user in an easy to read format.
 * Add history tab to the site to compare accuracy of forecasts.
 * Add discussion tab for software developers to collaborate and share thoughts on how to best optimize for carbon footprint.
-
-
-### Future work
-
 * Expand region analysis to other cloud service platforms (GCP, AWS, DigitalOcean, etc.)
 * More dynamic recomendations based on job to be done.
 * Create integrations that can support querying CarbonOracle in real time in pipeline flow.
