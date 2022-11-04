@@ -11,7 +11,7 @@ A prediction platform for software and job carbon footprint minimization on the 
 
 Built for the <a href="https://taikai.network/gsf/hackathons/carbonhack22" target="_blank">TaikAI Carbon hack 2022.</a>
 
-Live Demo: <a href='https://carbonoracle.surge.sh' target="_blank">https://www.carbonoracle.surge.sh</a>
+Live Demo: <a href='https://carbonoracle.surge.sh' target="_blank">https://carbonoracle.surge.sh</a>
 
 Participant deck: <a href="https://docs.google.com/presentation/d/1nRzRlhCGZpVwF7Yg8VjK8B5mtNe3yi7gUCPn5caGmxw/edit?usp=sharing" target="_blank">CarbonOracle Pitch</a>
 
