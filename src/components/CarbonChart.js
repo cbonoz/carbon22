@@ -76,7 +76,7 @@ export const CarbonChart = ({data, duration, activeRegions=[]}) => {
         <p>Based on the selected regions, the following times would work best for your run:</p>
           {[...annotations].sort((a, b) => a.value > b.value ? 1 : -1).map((result, i) => {
             const title = <span>
-              {result.location} ({result.value.toFixed(2)} gCO2/kWh)&nbsp;{i === 0 && <CheckCircleTwoTone twoToneColor="#52c41a" />}
+              #{i+1} {result.location} ({result.value.toFixed(2)} gCO2/kWh)&nbsp;{i === 0 && <CheckCircleTwoTone twoToneColor="#52c41a" />}
             </span>
             return <span style={{display: 'inline-block'}} key={i}>
               <Card title={title} style={{ width: 300, margin: 10 }} key={i}>
