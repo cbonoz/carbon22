@@ -15,7 +15,7 @@ Live Demo: <a href='https://carbonoracle.surge.sh' target="_blank">https://www.c
 
 Participant deck: <a href="https://docs.google.com/presentation/d/1nRzRlhCGZpVwF7Yg8VjK8B5mtNe3yi7gUCPn5caGmxw/edit?usp=sharing" target="_blank">CarbonOracle Pitch</a>
 
-Demo video:
+Demo video: https://youtu.be/GGyvJMkIkHY
 
 # Running locally
 Terminal 1: 
