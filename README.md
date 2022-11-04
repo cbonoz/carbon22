@@ -54,17 +54,15 @@ Before running a job check the `CarbonOracle` app for the best times in your reg
 
 
 ### Potential future work:
-* Add ability to multi-select region locations on map
-* Allow user to specify 'load' duration for the forecast API.
-* Based on selected locations make an api call to the sdk to determine the best forecast.
 * Suggest regions to run the load if the user didn't select a region with great carbon emissions.
-* Add chart visualization with the best time range highlighted on the chart for the user in an easy to read format.
 * Add history tab to the site to compare accuracy of forecasts.
 * Add discussion tab for software developers to collaborate and share thoughts on how to best optimize for carbon footprint.
 * Expand region analysis to other cloud service platforms (GCP, AWS, DigitalOcean, etc.)
 * More dynamic recomendations based on job to be done.
 * Create integrations that can support querying CarbonOracle in real time in pipeline flow.
-* Create a business platform that enables companies to track their net engineering green performance on a dashboard 
+* Connect users of the site to additional resources / incentives for prioritizing green work.
+* Add user logins and create a business platform that enables companies to track their net engineering green performance on a dashboard.
+
 
 ### Screenshots
 
